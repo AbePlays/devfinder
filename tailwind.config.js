@@ -1,10 +1,18 @@
 /* eslint-disable */
 
 module.exports = {
+  mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: 'media', // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'btn-primary': '#0e79fe',
+        'grey-light': '#1e2a48',
+        'grey-dark': '#131d30',
+      },
+      outline: ['hover', 'active'],
+    },
   },
   variants: {
     extend: {},
