@@ -1,10 +1,13 @@
-import { FunctionComponent, useEffect, useState } from 'react'
+import { FunctionComponent, Suspense, useEffect, useState } from 'react'
 
 import Skeleton from './components/Skeleton'
+import UserInfo from './components/UserInfo'
+import { createUserResource } from './components/UserInfo/helper'
 import './index.css'
 
 const App: FunctionComponent = () => {
   const [isDark, setIsDark] = useState<boolean>(false)
+  const [userResource, setUserResource] = useState<any>(null)
 
   const clickHandler = () => {
     const className = document.querySelector('html')?.className
@@ -17,7 +20,7 @@ const App: FunctionComponent = () => {
     event.preventDefault()
     const { Username } = event.target.elements
     const name = Username.value
-    console.log(name)
+    setUserResource(createUserResource(name))
   }
 
   useEffect(() => {
@@ -100,7 +103,7 @@ const App: FunctionComponent = () => {
             <label htmlFor="Username"></label>
             <input
               id="Username"
-              className="border w-full pl-10 pr-24 py-3 rounded-xl bg-gray-100 dark:bg-grey-light dark:placeholder-white"
+              className="w-full pl-10 pr-24 py-3 rounded-xl bg-gray-100 dark:bg-grey-light dark:placeholder-white outline-none focus:ring-2 focus:ring-btn-primary"
               type="text"
               placeholder="Search GitHub username..."
             />
@@ -111,7 +114,11 @@ const App: FunctionComponent = () => {
               Search
             </button>
           </form>
-          <Skeleton />
+          {userResource ? (
+            <Suspense fallback={<Skeleton />}>
+              <UserInfo userResource={userResource} />
+            </Suspense>
+          ) : null}
         </main>
       </div>
     </div>
