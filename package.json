@@ -3,24 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.24",
+    "@craco/craco": "^5.9.0",
     "@types/node": "^12.20.25",
     "@types/react": "^17.0.21",
     "@types/react-dom": "^17.0.9",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
+    "react": "^18.0.0-alpha-bc9bb87c2-20210917",
+    "react-dom": "^18.0.0-alpha-bc9bb87c2-20210917",
     "typescript": "^4.4.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx .",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json|ts|tsx)\"",
+    "check-format": "npm run prettier -- --list-different",
+    "format": "npm run prettier -- --write"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +38,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/parser": "^4.31.1",
+    "autoprefixer": "^9.8.6",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.25.2",
+    "postcss": "^7.0.36",
+    "prettier": "2.4.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14"
   }
 }
