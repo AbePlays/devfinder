@@ -1,9 +1,17 @@
-import { FunctionComponent, Suspense, useEffect, useRef, useState } from 'react'
+import {
+  FunctionComponent,
+  lazy,
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+  useTransition,
+} from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
 import ErrorFallback from './components/ErrorFallback'
 import Skeleton from './components/Skeleton'
-import UserInfo from './components/UserInfo'
+const UserInfo = lazy(() => import('./components/UserInfo'))
 import { createUserResource } from './components/UserInfo/helper'
 import './index.css'
 
@@ -11,11 +19,14 @@ const App: FunctionComponent = () => {
   const [isDark, setIsDark] = useState<boolean>(false)
   const [userResource, setUserResource] = useState<any>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const [isPending, startTransition] = useTransition()
 
   const clickHandler = () => {
-    const className = document.querySelector('html')?.className
-    document.querySelector('html')!.className =
-      className === 'dark' ? '' : 'dark'
+    const htmlEl = document.querySelector('html')
+    if (htmlEl) {
+      const { className } = htmlEl
+      htmlEl.className = className === 'dark' ? '' : 'dark'
+    }
     setIsDark((prev) => !prev)
   }
 
@@ -23,7 +34,9 @@ const App: FunctionComponent = () => {
     event.preventDefault()
     const { Username } = event.target.elements
     const name = Username.value
-    setUserResource(createUserResource(name))
+    startTransition(() => {
+      setUserResource(createUserResource(name))
+    })
   }
 
   useEffect(() => {
@@ -112,7 +125,8 @@ const App: FunctionComponent = () => {
               placeholder="Search GitHub username..."
             />
             <button
-              className="absolute top-1 right-1 bg-btn-primary hover:opacity-80 transition-opacity duration-300 h-10 w-20 rounded-lg text-white"
+              className="absolute top-1 right-1 bg-btn-primary hover:opacity-80 transition-opacity duration-300 h-10 w-20 rounded-lg text-white disabled:opacity-50 disabled:cursor-not-allowed "
+              disabled={isPending}
               type="submit"
             >
               Search
