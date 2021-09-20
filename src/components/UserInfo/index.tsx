@@ -38,8 +38,10 @@ const UserInfo: FunctionComponent<Props> = ({ userResource }) => {
           <span className="block">Joined {formattedDate}</span>
         </div>
       </div>
-      <p className="mt-8">{user.bio}</p>
-      <div className="bg-gray-100 dark:bg-grey-dark rounded-xl flex justify-between my-6 px-8 py-4 text-center">
+      <p className={`mt-8 break-words ${!user.bio ? 'text-gray-500' : ''}`}>
+        {user.bio || 'This profile has no bio'}
+      </p>
+      <div className="bg-gray-100 dark:bg-grey-dark rounded-xl flex justify-between my-6 px-4 sm:px-8 py-4 text-center">
         <div>
           <h2>Repos</h2>
           <span className="font-bold text-xl text-black dark:text-white">
