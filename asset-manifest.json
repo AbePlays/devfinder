@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/devfinder/static/css/main.aca71366.chunk.css",
+    "main.js": "/devfinder/static/js/main.249ea937.chunk.js",
+    "main.js.map": "/devfinder/static/js/main.249ea937.chunk.js.map",
+    "runtime-main.js": "/devfinder/static/js/runtime-main.492aa03e.js",
+    "runtime-main.js.map": "/devfinder/static/js/runtime-main.492aa03e.js.map",
+    "static/js/2.c4ad1468.chunk.js": "/devfinder/static/js/2.c4ad1468.chunk.js",
+    "static/js/2.c4ad1468.chunk.js.map": "/devfinder/static/js/2.c4ad1468.chunk.js.map",
+    "static/js/3.dd22ac19.chunk.js": "/devfinder/static/js/3.dd22ac19.chunk.js",
+    "static/js/3.dd22ac19.chunk.js.map": "/devfinder/static/js/3.dd22ac19.chunk.js.map",
+    "static/js/4.f147ed99.chunk.js": "/devfinder/static/js/4.f147ed99.chunk.js",
+    "static/js/4.f147ed99.chunk.js.map": "/devfinder/static/js/4.f147ed99.chunk.js.map",
+    "index.html": "/devfinder/index.html",
+    "static/css/main.aca71366.chunk.css.map": "/devfinder/static/css/main.aca71366.chunk.css.map",
+    "static/js/2.c4ad1468.chunk.js.LICENSE.txt": "/devfinder/static/js/2.c4ad1468.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.492aa03e.js",
+    "static/js/2.c4ad1468.chunk.js",
+    "static/css/main.aca71366.chunk.css",
+    "static/js/main.249ea937.chunk.js"
+  ]
+}
