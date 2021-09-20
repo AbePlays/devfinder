@@ -10,11 +10,13 @@ module.exports = {
         'grey-light': '#1e2a48',
         'grey-dark': '#131d30',
       },
-      outline: ['hover', 'active'],
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      opacity: ['disabled'],
+      cursor: ['disabled'],
+    },
   },
   plugins: [],
 }
