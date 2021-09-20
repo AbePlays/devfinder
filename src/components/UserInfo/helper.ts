@@ -3,15 +3,14 @@ export const createUserResource = (username: string) => {
 }
 
 const fetchUser = (username: string) => {
-  return new Promise((res) => {
-    setTimeout(() => {
-      res(
-        fetch(`https://api.github.com/users/${username}`).then((res) =>
-          res.json()
-        )
-      )
-    }, 3000)
-  })
+  return fetch(`https://api.github.com/users/${username}`)
+    .then((res) => res.json())
+    .then((res) => {
+      if ('id' in res) {
+        return res
+      }
+      return Promise.reject(new Error('User not found'))
+    })
 }
 
 export const createResource = (promise: Promise<any>) => {
